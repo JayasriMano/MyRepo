@@ -1,0 +1,54 @@
+<form [formGroup]="form">
+    <div class="form-container">
+    <div class="row">
+        
+            <h5 class="h">Name </h5>
+            <input type="text" pinputtext placeholder="Enter your name" formControlName="name" />
+    
+            <h5 class="h">Age</h5>
+            <input type="text" placeholder="Enter your age" formControlName="age" />
+        
+        
+            <h5 class="h">Email</h5>
+            <input type="text" placeholder="Enter your email" formControlName="email" />
+        
+        
+            <h5 class="h">Phone Number</h5>
+            <input type="text" maxlength="10" placeholder="Enter your phone number" class="form-control" formControlName="phone" />
+        
+    </div>
+    <input type="submit" value="Submit" (click)="onSubmit()">
+</div>
+</form>
+<br>
+<ng-container *ngIf="data.length > 0" >
+<table class="table-list">
+    <h4>User Details</h4>
+    <tr>
+        <!-- <th (click)="sortData('index')">S.No </th> -->
+        <th (click)="sortData()">Name
+            <span *ngIf="sortDirection == 'asc'">&#9650;</span> <!-- Ascending arrow -->
+        <span *ngIf="sortDirection == 'desc'">&#9660;</span> <!-- Descending arrow -->
+        </th>
+        <th (click)="sortData()">Age<span *ngIf="sortDirection == 'asc'">&#9650;</span> <!-- Ascending arrow -->
+            <span *ngIf="sortDirection == 'desc'">&#9660;</span> <!-- Descending arrow --></th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let item of data; let i=index">
+        <!-- <td>{{i+1}}</td> -->
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td (click)="onEdit(item,i)">edit</td>
+        <td (click)=" onDelete(i)">Delete</td>
+    </tr>
+</table>
+</ng-container>
+
+<div class="container">
+    Welcome
+</div>
